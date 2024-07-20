@@ -1,0 +1,15 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>To-Do List</h1>
+  <a href="{% url 'todo_create' %}">Add New</a>
+  <ul>
+    {% for todo in todos %}
+      <li class="{% if todo.completed %}completed{% endif %}">
+        {{ todo.title }}
+        <a href="{% url 'todo_update' todo.pk %}">Edit</a>
+        <a href="{% url 'todo_delete' todo.pk %}">Delete</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
